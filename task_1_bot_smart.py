@@ -42,10 +42,15 @@ try:
             print(f'Текущее количество конфет равно: {count_candy}')
     else:
         count_candy = 2021
+        check = 0
         while count_candy > 0:
             human = human_motion(count_candy)
             count_candy -= human
-            bot = bot_motion(count_candy, human)
+            
+            if check == 0 and human < 20:
+                bot = 20 - human
+                check = 1
+            else: bot = bot_motion(count_candy, human)
             count_candy -= bot
             print(f'Текущее количество конфет равно: {count_candy}')
 except: print('Можно брать от 1 до 28 кофет за один раз!!!')
